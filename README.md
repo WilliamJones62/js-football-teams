@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Football Teams
 
-Things you may want to cover:
+* Ruby version 2.3.0
 
-* Ruby version
+* System dependencies: rails 5.0.0, devise, omniauth-facebook
 
-* System dependencies
+* Database creation: Use the migrations in db/migrate
 
-* Configuration
+Project Overview:
 
-* Database creation
+This is a ruby on rails project for creating and maintaining football team records including all players used in the team and all matches played. To use this app, simply clone, run bundle install, rake db:migrate, and rails s from the terminal. Login utilizes Devise and also Omniauth for Facebook.
 
-* Database initialization
+Contributing
 
-* How to run the test suite
+Bug reports and pull requests are welcome on GitHub at https://github.com/WilliamJones62/football-teams. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-* Services (job queues, cache servers, search engines, etc.)
+License
 
-* Deployment instructions
-
-* ...
+The project is available as open source under the terms of the MIT License.

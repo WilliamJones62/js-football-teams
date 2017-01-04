@@ -1,0 +1,23 @@
+  <h1>Team: <%= @team.name %></h1>
+  <h2>Date: <%= @game.date %></h2>
+  <p>Opponent: <%= @game.opponent %></p>
+  <p>Goals For: <%= @game.score_for %></p>
+  <p>Goals Against: <%= @game.score_against %></p>
+  <p>Result: <% if @game.score_against < @game.score_for %>
+            Win
+              <% elsif @game.score_against > @game.score_for %>
+            Loss
+              <% else %>
+            Draw
+            <% end %></p>
+  <% unless @players.empty? %>
+    <h3>Players:</h3>
+    <ol>
+    <% @players.each do |player| %>
+      <li><a href="/teams/<%= @team.id %>/players/<%= player.id %>"><%= player.name %></a></li>
+    <% end %>
+    </ol>
+  <% end %>
+  <p>Total players used = <%= @players.count %></p>
+
+  <a href="/teams">Back</a>

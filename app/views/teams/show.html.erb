@@ -1,0 +1,40 @@
+<% if flash[:notice] %>
+  <div class="notice">
+    <%= flash[:notice] %></p>
+  </div>
+<% end %>
+
+<div class="card">
+  <h1><%= @team.name %></h1>
+
+  <p>League: <%= @team.league %></p>
+  <% unless @team.players.empty? %>
+    <h2>Players</h2>
+    <ol>
+      <% @team.players.each do |player| %>
+        <% if player.name != '' %>
+        <li><a href="/teams/<%= @team.id %>/players/<%= player.id %>"><%= player.name %></a></li>
+        <% end %>
+      <% end %>
+    </ol><br>
+    <% if @most_played != '' %>
+      <p> Most Played Player: <%= @most_played.name %> </p>
+    <% end %>
+    <% if @best_player != '' %>
+      <p> Best Player: <%= @best_player.name %> </p>
+    <% end %>
+<% end %>
+  <% unless @team.games.empty? %>
+    <h2>Games</h2>
+    <ol>
+      <% @team.games.each do |game| %>
+        <% if game.date != '' %>
+        <p><a href="/teams/<%= @team.id %>/games/<%= game.id %>"><%= game.date %></a> Opponent: <%= game.opponent %></p>
+        <% end %>
+      <% end %>
+    </ol><br>
+  <% end %>
+  <a href="/teams">Back</a> |
+  <a href="/teams/<%= @team.id %>/edit">Edit</a> |
+  <a href="/teams/<%= @team.id %>/destroy">Delete</a>
+</div>

@@ -1,0 +1,7 @@
+<%= form_for @player_game do |f| %>
+  <%= f.collection_radio_buttons(:game_id, @games, :id, :date) %>
+  <%= f.radio_button "player_id", @player.id, checked:true  %>
+  <%= f.label "Rating" %>
+  <%= f.number_field :player_rating %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,13 @@
+  <h1>Team: <%= @team.name %></h1>
+  <h2>Player Name: <%= @player.name %></h2>
+  <% unless @games.empty? %>
+  <h3>Games Played:</h3>
+  <ol>
+    <% @games.each do |game| %>
+      <li><a href="/teams/<%= @team.id %>/games/<%= game.id %>"><%= game.date %></a> Opponent: <%= game.opponent %></li>
+    <% end %>
+    </ol>
+  <% end %>
+  <p>Total games played = <%= @games.count %></p>
+  <a href="/player_games/new">Add a game for this player</a><br>
+  <a href="/teams">Back</a>

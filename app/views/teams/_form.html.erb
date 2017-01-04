@@ -1,0 +1,36 @@
+<%= form_for(@team) do |t| %>
+
+  <div class="field"> <%= t.label :name %><br>
+  <%= t.text_field :name %></div>
+
+  <div class="field"><%= t.label :league %><br>
+  <%= t.text_field :league %></div>
+  <br>
+
+  <h2>Players</h2>
+  <br>
+  <ul>
+    <%= t.fields_for :players do |player| %>
+    <li>
+      name: <%= player.text_field :name %>
+    </li>
+    <% end %>
+  </ul>
+  <br>
+  <h2>Games</h2>
+  <br>
+  <ul>
+    <%= t.fields_for :games do |game| %>
+    <li>
+      date: <%= game.date_field :date %>
+      opponent: <%= game.text_field :opponent %>
+      score for: <%= game.number_field :score_for %>
+      score against: <%= game.number_field :score_against %>
+      home/away: <%= game.text_field :home_away %>
+    </li>
+    <% end %>
+  </ul>
+  <br>
+<div class="actions"><%= t.submit 'Submit', :class => 'btn btn-primary' %></div>
+
+<% end %>

@@ -1,0 +1,4 @@
+<% @teams.each do |team| %>
+  <%= link_to team.name, team_path(team) %> | <%= team.league %><br>
+<% end %>
+<a href="/teams/new">Create a team</a>
