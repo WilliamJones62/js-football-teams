@@ -10,20 +10,19 @@
   <p>League: <%= @team.league %></p>
   <% unless @team.players.empty? %>
     <h2>Players</h2>
-    <ol>
-      <% @team.players.each do |player| %>
-        <% if player.name != '' %>
-        <li><a href="/teams/<%= @team.id %>/players/<%= player.id %>"><%= player.name %></a></li>
-        <% end %>
-      <% end %>
-    </ol><br>
+    <p><%= link_to "Load Players", team_players_path(@team), :class => "load_players" %></p>
+    <div class="players">
+      <ul>
+      </ul>
+    </div>
+    <br>
     <% if @most_played != '' %>
       <p> Most Played Player: <%= @most_played.name %> </p>
     <% end %>
     <% if @best_player != '' %>
       <p> Best Player: <%= @best_player.name %> </p>
     <% end %>
-<% end %>
+  <% end %>
   <% unless @team.games.empty? %>
     <h2>Games</h2>
     <ol>
