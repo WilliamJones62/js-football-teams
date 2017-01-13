@@ -10,11 +10,15 @@ class TeamsController < ApplicationController
 
   def new
     @team = Team.new
+    @players = @team.players
     13.times { @team.players.build }
     46.times { @team.games.build }
   end
 
   def edit
+    @players = @team.players
+#    @player = @team.players.build
+#    @game = @team.games.build
   end
 
   def create

@@ -1,0 +1,7 @@
+<% if !@team.games.empty? %>
+  <ul>
+    <% @team.games.each do |game| %>
+      <li> <%= game.date %> |<%= game.opponent %> |<%= game.score_for %> |<%= game.score_against %> |<%= game.home_away %> </li>
+    <% end %>
+  </ul>
+<% end %>

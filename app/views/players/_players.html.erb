@@ -1,0 +1,7 @@
+<% if !@team.players.empty? %>
+  <ul>
+    <% @team.players.each do |player| %>
+      <li> <%= player.name %> </li>
+    <% end %>
+  </ul>
+<% end %>
