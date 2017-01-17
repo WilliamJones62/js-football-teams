@@ -1,13 +1,21 @@
   <h1>Team: <%= @team.name %></h1>
-  <h2>Player Name: <%= @player.name %></h2>
-  <% unless @games.empty? %>
+  <h2 id="player-name">Player Name: <%= @player.name %></h2>
   <h3>Games Played:</h3>
-  <ol>
+  <ol id="games">
     <% @games.each do |game| %>
       <li><a href="/teams/<%= @team.id %>/games/<%= game.id %>"><%= game.date %></a> Opponent: <%= game.opponent %></li>
     <% end %>
-    </ol>
-  <% end %>
-  <p>Total games played = <%= @games.count %></p>
+  </ol>
+  <p id="played">Total games played = <%= @games.count %></p>
   <a href="/player_games/new">Add a game for this player</a><br>
+  <% if @prev_id != -1 %>
+    <a href="#" class="js-previous" team-id="<%= @team.id %>" player-id="<%= @prev_id %>">Previous Player</a><br>
+  <% else %>
+    <a href="#" hidden class="js-previous" team-id="<%= @team.id %>" player-id="<%= @prev_id %>">Previous Player</a><br>
+  <% end %>
+  <% if @next_id != -1 %>
+    <a href="#" class="js-next" team-id="<%= @team.id %>" player-id="<%= @next_id %>">Next Player</a><br>
+  <% else %>
+    <a href="#" hidden class="js-next" team-id="<%= @team.id %>" player-id="<%= @next_id %>">Next Player</a><br>
+  <% end %>
   <a href="/teams">Back</a>
