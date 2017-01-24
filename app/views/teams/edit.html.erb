@@ -4,3 +4,12 @@
 
 <%= link_to 'Show', @team %> |
 <a href="/teams">Cancel</a>
+
+<script id="player-template" type="text/x-handlebars-template">
+  <li>{{name}}</li>
+</script>
+
+<script id="game-template" type="text/x-handlebars-template">
+  <li>{{date}}|{{opponent}}|{{score_for}}|{{score_against}}|{{home_away}}</li>
+
+</script>

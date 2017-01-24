@@ -10,7 +10,8 @@ class PlayersController < ApplicationController
   def create
     @player = @team.players.build(players_params)
     if @player.save
-      render 'players/basic', layout: false
+#      render 'players/basic', layout: false
+      render :json => @player
     end
   end
 

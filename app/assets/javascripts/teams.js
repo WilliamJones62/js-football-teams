@@ -6,6 +6,28 @@ $(document).ready(function (){
   prevPlayer()
 });
 
+function Player(attributes){
+  this.name = attributes.name;
+  this.id = attributes.id;
+}
+
+Player.prototype.renderLI = function(){
+    return Player.template(this)
+}
+
+function Game(attributes){
+  this.date = attributes.date;
+  this.id = attributes.id;
+  this.opponent = attributes.opponent;
+  this.score_for = attributes.score_for;
+  this.score_against = attributes.score_against;
+  this.home_away = attributes.home_away;
+}
+
+Game.prototype.renderLI = function(){
+    return Game.template(this)
+}
+
 var players = [];
 
 function loadPlayers() {
@@ -24,10 +46,14 @@ function loadPlayers() {
 function addPlayer() {
   $("#new_player").submit(function(e){
     e.preventDefault();
-    $.post(this.action, $(this).serialize()).success(function(response){
+    $.post(this.action, $(this).serialize()).success(function(json){
+      Player.templateSource = $("#player-template").html()
+      Player.template = Handlebars.compile(Player.templateSource);
+      var player = new Player(json)
+      var playerLi = player.renderLI()
       $("#player_name").val("");
       var $ul = $("div.players ul")
-      $ul.append(response)
+      $ul.append(playerLi)
       $(":submit").removeAttr("disabled");
     })
   })
@@ -36,14 +62,18 @@ function addPlayer() {
 function addGame() {
   $("#new_game").submit(function(e){
     e.preventDefault();
-    $.post(this.action, $(this).serialize()).success(function(response){
+    $.post(this.action, $(this).serialize()).success(function(json){
+      Game.templateSource = $("#game-template").html()
+      Game.template = Handlebars.compile(Game.templateSource);
+      var game = new Game(json)
+      var gameLi = game.renderLI()
       $("#game_date").val("");
       $("#game_opponent").val("");
       $("#game_score_for").val("");
       $("#game_score_against").val("");
       $("#game_home_away").val("");
       var $ul = $("div.games ul")
-      $ul.append(response)
+      $ul.append(gameLi)
       $(":submit").removeAttr("disabled");
     })
   })
