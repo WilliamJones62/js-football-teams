@@ -5,11 +5,10 @@ Rails.application.routes.draw do
   resources :player_games
   resources :teams do
     # nested resource for teams
-    resources :players
-    resources :games
+    resources :players, only: [:show]
+    resources :games, only: [:show]
   end
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks" }
   get '/users/sign_out', to: 'static_pages#home'
-  get '/teams/:team_id/players/:id/data', to: 'players#data'
 
 end
