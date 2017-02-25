@@ -10,7 +10,7 @@ Football Teams
 
 Project Overview:
 
-This is a ruby on rails project for creating and maintaining football team records including all players used in the team and all matches played. To use this app, simply clone, run bundle install, rake db:migrate, and rails s from the terminal. It uses an angular front end.
+This is a ruby on rails project for creating and maintaining football team records including all players used in the team and all matches played. To use this app, simply clone, run bundle install, rake db:migrate, and rails s from the terminal. Login utilizes Devise and also Omniauth for Facebook.
 
 Contributing
 
